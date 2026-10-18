@@ -54,31 +54,41 @@
      The decision rule is worth a point on its own and it's the thing most
      people leave out. Every taxonomy has a hardest boundary. Name yours. -->
 
-### `label_one`
+### `full`
 
-**Definition:**
-
-**Example 1:**
->
-
-**Example 2:**
->
-
-### `label_two`
-
-**Definition:**
+**Definition:** A title that, on its own, tells the full event and its nature.
 
 **Example 1:**
->
+> Shanghai SF: Davidovich Fokina def. Zverev - 5-7 6-4 6-3
 
 **Example 2:**
->
+> We will have the Spanish final at the Shanghai ATP, Alejandro Davidovich Fokina x Rafa Jodar
+
+### `partial`
+
+**Definition:** A title that is context or time sensitive, naming specific news, a result, an event or an announcement, but that on its own does not tell the full event and its nature.
+
+**Example 1:**
+> What Iga told Maja at the net…
+
+**Example 2:**
+> players with a slam final and a WTA 1000 final in 2026
+
+### `nothing`
+
+**Definition:** A title that is not context or time sensitive: it could be slapped onto any image or video and, on its own, tells nothing about the event.
+
+**Example 1:**
+> Something's off
+
+**Example 2:**
+> Tennis Moments
 
 ### The hardest boundary
 
-**Which two labels:**
+**Which two labels:** `full` and `partial`
 
-**The decision rule I used every time:**
+**The decision rule I used every time:** If the title sentence, read alone without the image by anyone from a passing stranger to a regular, states a usable fact that is news (a result, an announcement, a report, a statement or a record), it is `full`; if it doesn't state the fact itself, or the fact is only a moment within a match (a shot, a point, a live set update), it is `partial`.
 <!-- e.g. "If the post names a specific checkable fact, it's `analysis`, even
      if the tone is heated." -->
 
