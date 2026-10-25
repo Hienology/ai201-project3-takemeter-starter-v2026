@@ -54,11 +54,13 @@ whether you hit them:
 ## 1.
 
 <!-- Your criterion. It must name a number. -->
+On the held-out test split, F1 is at least 0.75 for `full`, 0.50 for `partial`
+and 0.75 for `nothing`, on each of seeds 42, 7 and 2024.
 
 
 
 **Why this target:**
-
+"0.5 much lower than 0.75 since it is ambiguous by itself, you can ask question on how much is enough, how significant of this over that is enough. I don't know how seeds work here, I can set 0.8 but seeds value might not bring the same results so I went with 0.75"
 
 
 ---
@@ -66,10 +68,13 @@ whether you hit them:
 ## 2.
 
 <!-- Your criterion. -->
+Accuracy on the held-out test split is at least 0.78 (25 of 32 titles) on each
+of seeds 42, 7 and 2024.
 
 
 
 **Why this target:**
+I'd need 25 of the 32 test titles right (I wished for 30+) before trusting the model to tell a scroller which titles they can read without clicking. Always guessing `full` already gets 15 of 32 right (0.47), so 25 means 10 titles of real skill beyond that.
 
 
 
@@ -78,10 +83,15 @@ whether you hit them:
 ## 3.
 
 <!-- Your criterion. -->
+On the held-out test split, the number of titles the model predicts as each
+label (`full`, `partial`, `nothing`) is within 2 of that label's real count,
+on each of seeds 42, 7 and 2024.
 
 
 
 **Why this target:**
+Missing is worse than an extra click: if the model calls a title `full` when it isn't, a scroller skips a post they actually needed, while opening a post whose title was already complete still shows the comments, so it isn't wasted. A lean of up to 2 of 32 titles (about 6%) can be noise; 3 or more means the model is really leaning.
+
 
 
 
@@ -90,10 +100,15 @@ whether you hit them:
 ## 4.
 
 <!-- Your criterion. -->
+Under `data/staff_taxonomy.md`, my labels on the 30 staff posts agree with
+staff's on at least 20 of 30 (0.67), as reported by `agreement.py`. Measured
+once; it doesn't depend on the seed.
 
 
 
 **Why this target:**
+Two in three feels right: I'll be applying staff's rules for the first time without knowing how simple or complex they are, and even with my own rules my stress-test labels matched the intended ones on only 4 of 8 boundary titles before I tightened them. Random guessing would agree on about 10 of 30, so 20 is well above chance.
+
 
 
 
@@ -102,10 +117,16 @@ whether you hit them:
 ## 5.
 
 <!-- Your criterion. -->
+On each of seeds 42, 7 and 2024, for each of `full`, `partial` and `nothing`,
+the trained model's F1 on that seed's held-out test titles is at least 0.20
+higher than the zero-shot baseline's (`baseline.py`, using my
+`label_definitions.txt`) on the same titles.
 
 
 
 **Why this target:**
+A 20-point F1 gap means the trained model gets about 3 more `full` titles and about 2 more `partial` and `nothing` titles right per 32-title test split than a model that only read my definitions; that's what makes labeling 210 titles worth it to me.
+
 
 
 
