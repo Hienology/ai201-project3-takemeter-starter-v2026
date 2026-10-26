@@ -76,7 +76,7 @@
 
 ### `nothing`
 
-**Definition:** A title that is not context or time sensitive: it could be slapped onto any image or video and, on its own, tells nothing about the event.
+**Definition:** A title that isn't about serious tennis news or discussion (fun posts, fan activities, memes), so on its own it tells nothing about a tennis event, whatever names it mentions.
 
 **Example 1:**
 > Something's off
