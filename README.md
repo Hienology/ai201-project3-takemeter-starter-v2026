@@ -42,7 +42,7 @@
 <!-- Your community, and what your classifier sorts posts into. Three or four
      sentences. -->
 
-
+TakeMeter reads post titles from r/tennis and sorts them by how much a title tells on its own, without the image, video or link that comes with almost every post there. A `full` title states the news itself (a result, an announcement, a report, a statement or a record); a `partial` title points at specific tennis news or discussion but leaves the fact to the image, the link or the comments; a `nothing` title is a fun post, fan activity or meme that tells nothing about a tennis event. The question behind it is whether a title is "informative enough to fully know the primary stuff without need to look at the image / video and/or the comments". The classifier is `distilbert-base-uncased`, fine-tuned on 210 titles I labeled myself.
 
 ---
 
@@ -101,19 +101,25 @@
 <!-- Where you collected from, how you labelled, your counts, and three hard
      cases. -->
 
-**Where the posts came from:**
+**Where the posts came from:** r/tennis (old.reddit.com), post titles only: no comments, no post text, no images. Two listings:
+
+- **New:** 8 pages of r/tennis/new, posts from Oct 19-25, 2026, leaving out the mod bot's daily discussion threads. Most `full` and `partial` titles, and all 22 cold rows, come from here.
+- **Tennis Nonsense flair:** the first 3 pages of that flair's listing, newest first (mid-September to late October 2026). `nothing` titles were about 1 in 40 on New and Best, so I went where they are. Each title was still judged by my definitions, not by its flair: the Roddick/Serena "TIL" title from this flair is `full`.
+
+I labeled titles in listing order up to quotas of 100 `full`, 55 `partial` and 55 `nothing`; once a label was full, later titles of that label were left out, not relabeled. 55 is about the smallest count that gives each label at least 8 test titles on every seed (42, 7, 2024). Titles are as posted, except for two social-media handles I removed. One repost of the same match result was dropped; two pairs of different posts about the same final (a trophy photo and the result line) were kept.
 
 **How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
 Say so plainly — the disclosure is required, not penalised. -->
+By hand, with no AI pre-labelling: every label is mine. I labeled 22 titles from New cold first, alone, before the AI saw them; then I pasted them into the chat and the AI added them to the file with `cold` in `note`. For the other 188, the AI turned the pages I pasted into numbered title lists, I answered with a label per number (`f`/`p`/`n`), and a script added them, in chunks of about 50. After each chunk a checker counted the labels and looked for duplicates, and the AI pointed out labels of mine that contradicted each other or my written definitions, without suggesting labels. I re-judged those myself: four labels changed, and I reworded the `nothing` definition to "isn't about serious tennis news or discussion". Six rows carry a `hard case` note.
 
 **Counts per label:**
 
 | Label | Count | Share |
 |---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-| **Total** |  | 100% |
+| `full` | 100 | 48% |
+| `partial` | 55 | 26% |
+| `nothing` | 55 | 26% |
+| **Total** | 210 | 100% |
 
 **Three hard cases**
 
@@ -121,25 +127,25 @@ Say so plainly — the disclosure is required, not penalised. -->
      been, and what you chose. These are worth more than the easy 190. -->
 
 **1.**
-> *The post:*
+> *The post:* Elena Rybakina with her mom, & sister in Ningbo finals
 >
-> *Could have been:*
+> *Could have been:* `full` or `partial`
 >
-> *I chose, because:*
+> *I chose, because:* `partial`. The winner usually poses for photos like this, so a regular might guess that Rybakina won Ningbo, but the title never says who won. My rule asks whether the title itself states the fact, and this one only hints at it.
 
 **2.**
-> *The post:*
+> *The post:* Sabalenko at ufc
 >
-> *Could have been:*
+> *Could have been:* `partial` or `nothing`
 >
-> *I chose, because:*
+> *I chose, because:* `nothing`. A player's name plus an event usually makes a title `partial`, but here the misspelt name is the joke (taken from a UFC graphic), and without the image the title says nothing about any tennis event.
 
 **3.**
-> *The post:*
+> *The post:* TIL in 2019 Andy Roddick and Serena Williams went on TV and performed a lip-synced cover of "Finesse" by Bruno Mars and Cardi B
 >
-> *Could have been:*
+> *Could have been:* `full` or `nothing`
 >
-> *I chose, because:*
+> *I chose, because:* `full`. It came from the Tennis Nonsense flair and it is fun, but the title states the whole fact (who, what, when), so I could skip the video and still get the point. The flair doesn't decide the label; the title does.
 
 ---
 
@@ -147,17 +153,25 @@ Say so plainly — the disclosure is required, not penalised. -->
 
 <!-- Your starting model, your settings, and anything you changed and why. -->
 
-**Base model:**
+**Base model:** `distilbert-base-uncased`, fully fine-tuned with the Hugging Face `Trainer` (no LoRA).
 
 **Settings:** <!-- epochs, learning rate, batch size, seed -->
+3 epochs, learning rate 2e-5, batch size 16, max length 128 tokens, seed 42. Trained on an Apple Silicon GPU (`mps`), torch 2.14.1.
 
-**Anything I changed from the defaults, and why:**
+**Anything I changed from the defaults, and why:** Nothing; I used the notebook's defaults. For reference, my longest title is 80 tokens (median 21), so the 128-token limit never cuts a title off.
 
 **Split sizes:** <!-- train / val / test, and per-label counts in the test
 split. If a label had fewer than about 8 in test, say so — it explains a lot
 of next unit's variance. -->
+train 146 / validation 32 / test 32 (stratified 70/15/15, seed 42).
 
+| Label | Train | Validation | Test |
+|---|---|---|---|
+| `full` | 70 | 15 | 15 |
+| `partial` | 38 | 9 | 8 |
+| `nothing` | 38 | 8 | 9 |
 
+Every label has at least 8 test titles, but only just: in `partial`, one title moves recall by 0.125.
 
 ---
 
@@ -172,17 +186,23 @@ of next unit's variance. -->
 
 **Moment 1**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* which label split was better for about 200 titles: 50/25/25 or 60/20/20 (`full`/`partial`/`nothing`).
+- *What came back:* the AI ran both through the notebook's own split code on seeds 42, 7 and 2024. Both left labels short in the test split: 100/50/50 left one label at 7 test titles on every seed, and 120/40/40 left two labels at 6. A third option, 100/55/55, gave every label 8 or more on every seed.
+- *What I changed:* I dropped both of my plans and collected to 100/55/55, 210 titles.
 
 **Moment 2**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* to add my labels for 44 Tennis Nonsense titles to the file.
+- *What came back:* no label suggestions, but three groups where my labels contradicted each other or my written definitions: in-match moments labeled both `partial` and `nothing`; a stated record and two announcements labeled `nothing`, though my rule calls records and announcements `full`; and titles naming a player and an event labeled `nothing`, though my `nothing` definition then said a `nothing` title is not context or time sensitive.
+- *What I changed:* I relabeled four titles (two to `partial`, two to `full`) and kept the rest, deciding that serious tennis discussion is `partial` while fun posts, fan activities and memes are `nothing`. The AI reworded the `nothing` definition from my own phrases, and I confirmed it.
 
 **Pre-labelling disclosure:**
+No pre-labelling: every label in `labels.csv` is mine, and the AI never suggested one. What the AI (Claude, in VS Code) did:
+
+- Turned the Reddit pages I pasted into numbered title lists (dropping usernames, scores, links, and two social-media handles inside titles), and wrote my labels into `labels.csv` by number with a script. It also typed in my 22 cold rows after I had labeled them alone.
+- Drafted wording I asked for, from my own words: the three label definitions and the later `nothing` rewording, the decision-rule sentence, and the "Why this target" lines for criteria 2-5. The numbers and choices in `criteria.md` are mine.
+- Wrote 8 made-up boundary titles to stress-test my definitions; none of them is in `labels.csv`.
+- Drafted this README's Unit 5 write-up (What This Does, The Dataset, The Training Run, How I Used AI) from my recorded decisions and reasons, at my request; I reviewed it.
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
