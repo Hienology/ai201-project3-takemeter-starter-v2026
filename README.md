@@ -203,6 +203,7 @@ No pre-labelling: every label in `labels.csv` is mine, and the AI never suggeste
 - Drafted wording I asked for, from my own words: the three label definitions and the later `nothing` rewording, the decision-rule sentence, and the "Why this target" lines for criteria 2-5. The numbers and choices in `criteria.md` are mine.
 - Wrote 8 made-up boundary titles to stress-test my definitions; none of them is in `labels.csv`.
 - Drafted this README's Unit 5 write-up (What This Does, The Dataset, The Training Run, How I Used AI) from my recorded decisions and reasons, at my request; I reviewed it.
+- Unit 6 staff set: printed the 30 staff posts in chat for me to label, and wrote my labels into `my_staff_labels.csv`; it made no comment on any post before my file was saved. In the Agreement Report the calls and piles are mine; the AI rephrased my reasons onto the staff taxonomy's wording and showed me the case for the other label before I confirmed each one.
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
@@ -304,7 +305,9 @@ No pre-labelling: every label in `labels.csv` is mine, and the AI never suggeste
      data/staff_taxonomy.md, not your own — so every argument below is made
      from those definitions and those decision rules. -->
 
-**Agreement rate:** ___ / 30 = ___%
+**Agreement rate:** 24 / 30 = 80%
+
+I labelled 29 of the 30 before seeing the staff labels. On `sp_002` I was undecided between `analysis` and `hot_take` when the staff labels arrived, and I picked `hot_take` afterwards.
 
 <!-- Nobody grades this number. A 60% who argues every disagreement from the
      stated rules beats a 95% who wrote "staff was right" nine times. Several
@@ -326,25 +329,62 @@ No pre-labelling: every label in `labels.csv` is mine, and the AI never suggeste
      written rule two different ways on 30 posts, that is direct evidence about
      what you did across your own 200. -->
 
-**1.**
-> *The post:*
+**1. `sp_002`**
+> *The post:* "I tracked sleep against session quality for eleven weeks. Under seven hours the next day's intervals were 6-8 seconds per mile slower, every time bar one. Small sample, one runner, but it's consistent enough that I've stopped scheduling hard days after late shifts."
 >
-> *Staff said / I said:*
+> *Staff said / I said:* `analysis` / `hot_take`
 >
-> *My call, and why:*
+> *My call, and why:* I stand by `hot_take`. The `analysis` definition needs a *checkable* fact; this post's numbers come from one runner's private training log, which no reader can check, so the conclusion rests on the writer's word. It isn't `reaction` either (rule 2): it reports eleven weeks of tracking, not something that just happened and how it felt.
 >
-> *Which pile:*
+> *Which pile:* (b). The page doesn't say whether one person's own records count as a checkable fact.
 
-**2.**
-> *The post:*
+**2. `sp_005`**
+> *The post:* "Carbon plates aren't the whole story. My times dropped 2% in the shoes and another 2% the following year in the same pair, when the only thing that changed was going from 35 to 50 miles a week."
 >
-> *Staff said / I said:*
+> *Staff said / I said:* `analysis` / `hot_take`
 >
-> *My call, and why:*
+> *My call, and why:* I stand by `hot_take`, for the same reason as `sp_002`. The `analysis` definition needs a *checkable* fact; the two 2% drops are the writer's own times, which no reader can check, so "aren't the whole story" rests on the writer's word.
 >
-> *Which pile:*
+> *Which pile:* (b), the same gap as `sp_002`.
+
+**3. `sp_007`**
+> *The post:* "Ran the same loop in 4C and in 24C within a fortnight, same effort by heart rate. 90 seconds slower in the heat over six miles. People keep saying heat costs you 'a bit' and it's more than that."
+>
+> *Staff said / I said:* `analysis` / `hot_take`
+>
+> *My call, and why:* I stand by `hot_take`, for the same reason as `sp_002`. The 90 seconds comes from two of the writer's own runs, which no reader can check, so the *checkable* fact the `analysis` definition asks for isn't there; "more than 'a bit'" rests on the writer's word.
+>
+> *Which pile:* (b), the same gap as `sp_002`.
+
+**4. `sp_009`**
+> *The post:* "The 10K route was remeasured in 2021 and came out 60 metres long. Everyone comparing PBs from before and after that is comparing two different races, which is about 12 seconds at club pace."
+>
+> *Staff said / I said:* `analysis` / `hot_take`
+>
+> *My call, and why:* Staff is right. The remeasurement is a public, checkable fact (a date, 2021, and a measurement, 60 metres), and rule 1 holds: the conclusion that PBs before and after 2021 aren't comparable rests on it, down to the 12 seconds. Unlike `sp_002`, `sp_005` and `sp_007`, the fact isn't the writer's private record, so my own reading puts it in `analysis`. I applied rule 1 loosely.
+>
+> *Which pile:* (a).
+
+**5. `sp_010`**
+> *The post:* "Three of us ran the same session on the same day, different shoes, within 10 seconds of each other over 5 miles. I'm not saying shoes do nothing, but whatever they do was smaller than the noise between three people."
+>
+> *Staff said / I said:* `analysis` / `reaction`
+>
+> *My call, and why:* Neither, in my reading: `hot_take`. My `reaction` was wrong: the post asserts something general about shoes rather than reporting how a run felt (rule 2). Against `analysis`: the 10 seconds comes from one session among three runners, which no reader can check, so "whatever they do was smaller than the noise" is the writer's judgement, not a checkable fact doing the work.
+>
+> *Which pile:* (a), for my own label: the rules covered `reaction` and I applied them loosely.
+
+**6. `sp_012`**
+> *The post:* "Heart rate zones are astrology for runners."
+>
+> *Staff said / I said:* `hot_take` / `reaction`
+>
+> *My call, and why:* Staff is right. Rule 2: `reaction` reports what just happened to the writer and how it felt; this reports nothing that happened and asserts something general about the world, with no support, so it's `hot_take`. I applied rule 2 loosely.
+>
+> *Which pile:* (a).
 
 **What the pattern in my disagreements tells me:**
+Four of my six disagreements (`sp_002`, `sp_005`, `sp_007`, `sp_010`) come from one reading I added: numbers from the writer's own runs aren't a checkable fact. Where the fact was public (`sp_009`) I agree it's `analysis`, so the reading is consistent, but the page never says whose data counts. The other three are pile (a), loose applications of rules 1 and 2, which is 3 of 30 posts. For my own 210 titles, both risks apply: I may hold conditions I never wrote into my rule, and I may apply a written rule loosely on about 1 title in 10.
 
 
 
