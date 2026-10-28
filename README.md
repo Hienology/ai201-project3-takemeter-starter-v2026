@@ -204,6 +204,7 @@ No pre-labelling: every label in `labels.csv` is mine, and the AI never suggeste
 - Wrote 8 made-up boundary titles to stress-test my definitions; none of them is in `labels.csv`.
 - Drafted this README's Unit 5 write-up (What This Does, The Dataset, The Training Run, How I Used AI) from my recorded decisions and reasons, at my request; I reviewed it.
 - Unit 6 staff set: printed the 30 staff posts in chat for me to label, and wrote my labels into `my_staff_labels.csv`; it made no comment on any post before my file was saved. In the Agreement Report the calls and piles are mine; the AI rephrased my reasons onto the staff taxonomy's wording and showed me the case for the other label before I confirmed each one.
+- Unit 6 runs and write-up: ran `baseline.py` and `agreement.py`, and rebuilt the seed 7 and seed 2024 test splits with the notebook's own split function (seed 42 reproduced `test_split.csv` exactly) to run the baseline on them for criterion 5. Filled the README's tables from the result files. Drafted, from my calls and reasons and at my request, the prediction sentence, "What the gap actually means", the off-diagonal sentence, the diagnoses, the improvement write-up and What's Still Broken. The prediction's content, the verdicts, the adjudication calls and piles, and the choice of 10 epochs are mine.
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
@@ -449,12 +450,21 @@ How I know it was the change: my first "after" run accidentally kept 3 epochs an
 ## What's Still Broken
 
 <!-- For each criterion still missed: what you'd do, and why you stopped. -->
+After the 10-epoch run, criteria 1, 2, 3 and 5 are still missed. All four trace back to the same cause: too few `partial` and `nothing` titles (38 each in training).
+
+- **#1, `nothing` F1 below 0.75 on every seed (0.737 / 0.625 / 0.333).** I'd collect about 50 more `nothing` titles from the Tennis Nonsense flair, and fix my `nothing` definition so it matches my labels: it says fan activities are `nothing`, but I labelled fan paintings `partial`. I'd also write down the rule I actually used for titles whose meaning depends on the image (#69 `partial` vs #177 `nothing`).
+- **#2, accuracy below 0.78 (0.750 / 0.719 / 0.656).** The same data fix, plus keeping the epoch with the best validation score instead of the last one: seed 2024's validation macro F1 peaked at epoch 5 and fell after.
+- **#3, predicted counts off by 3-6 on seeds 42 and 2024 (seed 7 is within 2).** The over-called label moves from seed to seed (`full` on 42, `partial` on 2024), which is the same small-label problem, so the same fixes.
+- **#5, `partial` beats the baseline by only +0.100 / +0.186 / +0.145 (target +0.20).** More `partial` titles. The baseline gets `partial` F1 0.40 for free by calling every title `partial`, so the trained model needs to be clearly better on that label, not just present.
+
+Why I stopped: the deadline, and the assignment asks for one measured change. Choosing the best epoch or adding data would each be a second change needing its own three-seed run, and I didn't declare a second improvement before building.
 
 
 
 **The gap between what I meant my labels to capture and what the model
 learned:**
 <!-- Two sentences. Your confusion matrix is the evidence. -->
+I meant `partial` to capture a title that points at news but leaves the fact out, and `nothing` a title that isn't serious tennis; what the model learned looks closer to "names a player or event" versus "doesn't". Before the change it folded `partial` into `full` (6 of 8 on seed 42, 0 the other way); after it, it finds `partial` but on seed 2024 folds `nothing` into `partial` (6 of 9), so the line it draws follows the names in a title more than whether the title states the fact.
 
 
 
