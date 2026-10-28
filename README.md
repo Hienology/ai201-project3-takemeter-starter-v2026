@@ -417,23 +417,30 @@ Four of my six disagreements (`sp_002`, `sp_005`, `sp_007`, `sp_010`) come from 
 ## The Improvement
 
 **What I changed:**
+One setting: `EPOCHS` from 3 to 10 in section 2. Everything else stayed the same: learning rate 2e-5, batch 16, the same `labels.csv`, the same seeds 42, 7 and 2024, run with `RUN_LABEL = "after"`. Unit 5's `results.json` and `test_split.csv` were not re-run.
 
 **Which diagnosis pointed at it:**
+The shared diagnosis: on every seed the model drops one of the two smaller labels and falls back on `full`. The notebook keeps the last epoch's model, and 146 training titles at batch 16 is about 10 updates per epoch, so 3 epochs is about 30 updates in total; I expected that to stop training while the model still leaned on the biggest label. More epochs attacks that part of the diagnosis without new data. It can't fix the other part, 38 training titles per small label.
 
 ### Run Log — After
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. F1 per label (`full` / `partial` / `nothing`) | ≥ 0.75 / 0.50 / 0.75 | 0.848 / 0.500 / 0.737 | 0.812 / 0.625 / 0.625 | 0.867 / 0.545 / 0.333 | MISSED |
+| 2. Accuracy | ≥ 0.78 (25 of 32) | 0.750 (24) | 0.719 (23) | 0.656 (21) | MISSED |
+| 3. Predicted count vs real count (`full` / `partial` / `nothing`) | each within 2 | 18/4/10 vs 15/8/9 | 17/7/8 vs 15/9/8 | 15/14/3 vs 15/8/9 | MISSED |
+| 4. Staff agreement | ≥ 20 of 30 | 24/30 (no seed) | 24/30 (no seed) | 24/30 (no seed) | MET |
+| 5. Trained F1 minus baseline F1 (`full` / `partial` / `nothing`) | each ≥ +0.20 | +0.848 / +0.100 / +0.737 | +0.812 / +0.186 / +0.625 | +0.867 / +0.145 / +0.333 | MISSED |
+
+Same three seeds and test splits as Run Log — Before; the baseline numbers are unchanged (the baseline isn't trained). Device `mps`. Numbers from `results_three_seeds_after.json`.
 
 **Did it help, and how do I know:**
 
 <!-- If it didn't, say so. Relabelling that didn't help is a genuinely
      interesting result and earns full credit. -->
+Partly. Macro F1 rose on all three seeds (0.492 → 0.695, 0.408 → 0.688, 0.487 → 0.582), and no seed drops a label any more: `partial` F1 went from 0.000 / 0.435 / 0.000 to 0.500 / 0.625 / 0.545, so criterion 1's `partial` target now holds on every seed (seed 42 exactly at 0.50). Accuracy rose on seeds 42 and 7 (21 → 24 and 18 → 23 of 32) and stayed at 21 on seed 2024. But all four misses are still misses, and seed 2024 got worse on `nothing` (0.636 → 0.333): 6 of its 9 `nothing` titles now go to `partial`, so there the over-calling moved from `full` to `partial` instead of going away.
+
+How I know it was the change: my first "after" run accidentally kept 3 epochs and reproduced the before-numbers exactly, so training on my Mac is repeatable and the difference comes from the epochs, not chance. On seed 2024 the validation macro F1 peaked at epoch 5 (0.693) and fell to 0.578 by epoch 10, which looks like overfitting; that seed's drop on `nothing` fits.
 
 
 
