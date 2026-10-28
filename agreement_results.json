@@ -1,0 +1,38 @@
+{
+  "compared": 30,
+  "agreed": 24,
+  "agreement_rate": 0.8,
+  "disagreements": [
+    {
+      "text": "I tracked sleep against session quality for eleven weeks. Under seven hours the next day's intervals were 6-8 seconds per mile slower, every time bar one. Small sample, one runner, but it's consistent enough that I've stopped scheduling hard days after late shifts.",
+      "staff": "analysis",
+      "mine": "hot_take"
+    },
+    {
+      "text": "Carbon plates aren't the whole story. My times dropped 2% in the shoes and another 2% the following year in the same pair, when the only thing that changed was going from 35 to 50 miles a week.",
+      "staff": "analysis",
+      "mine": "hot_take"
+    },
+    {
+      "text": "Ran the same loop in 4C and in 24C within a fortnight, same effort by heart rate. 90 seconds slower in the heat over six miles. People keep saying heat costs you 'a bit' and it's more than that.",
+      "staff": "analysis",
+      "mine": "hot_take"
+    },
+    {
+      "text": "The 10K route was remeasured in 2021 and came out 60 metres long. Everyone comparing PBs from before and after that is comparing two different races, which is about 12 seconds at club pace.",
+      "staff": "analysis",
+      "mine": "hot_take"
+    },
+    {
+      "text": "Three of us ran the same session on the same day, different shoes, within 10 seconds of each other over 5 miles. I'm not saying shoes do nothing, but whatever they do was smaller than the noise between three people.",
+      "staff": "analysis",
+      "mine": "reaction"
+    },
+    {
+      "text": "Heart rate zones are astrology for runners.",
+      "staff": "hot_take",
+      "mine": "reaction"
+    }
+  ],
+  "staff_posts_not_in_mine": 0
+}
