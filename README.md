@@ -219,10 +219,13 @@ No pre-labelling: every label in `labels.csv` is mine, and the AI never suggeste
 
 | Measure | Baseline | Trained | Difference |
 |---|---|---|---|
-| Overall accuracy |  |  |  |
-| Macro F1 |  |  |  |
-| F1 — `label_one` |  |  |  |
-| F1 — `label_two` |  |  |  |
+| Overall accuracy | 0.250 | 0.656 | +0.406 |
+| Macro F1 | 0.133 | 0.492 | +0.358 |
+| F1 — `full` | 0.000 | 0.769 | +0.769 |
+| F1 — `partial` | 0.400 | 0.000 | -0.400 |
+| F1 — `nothing` | 0.000 | 0.706 | +0.706 |
+
+Seed 42's test split (32 titles, `test_split.csv`), baseline using my `label_definitions.txt`. The baseline answered `partial` for all 32 titles. It did the same on seed 7's and seed 2024's test splits (`baseline_results_seed7.json`, `baseline_results_seed2024.json`, used for criterion 5).
 
 **What I predicted before I looked:**
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
@@ -244,22 +247,26 @@ I expect the trained model to beat the baseline by about 20 points of accuracy, 
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. F1 per label (`full` / `partial` / `nothing`) | ≥ 0.75 / 0.50 / 0.75 | 0.769 / 0.000 / 0.706 | 0.788 / 0.435 / 0.000 | 0.824 / 0.000 / 0.636 |  |
+| 2. Accuracy | ≥ 0.78 (25 of 32) | 0.656 (21) | 0.562 (18) | 0.656 (21) |  |
+| 3. Predicted count vs real count (`full` / `partial` / `nothing`) | each within 2 | 24/0/8 vs 15/8/9 | 18/14/0 vs 15/9/8 | 19/0/13 vs 15/8/9 |  |
+| 4. Staff agreement | ≥ 20 of 30 | 24/30 (no seed) | 24/30 (no seed) | 24/30 (no seed) |  |
+| 5. Trained F1 minus baseline F1 (`full` / `partial` / `nothing`) | each ≥ +0.20 | +0.769 / -0.400 / +0.706 | +0.788 / -0.004 / 0.000 | +0.824 / -0.400 / +0.636 |  |
+
+Device: `mps` (Apple Silicon GPU), torch 2.14.1. Numbers from `results_three_seeds_before.json` and `baseline_results*.json`.
 
 ### Confusion matrix
 
 <!-- ⚠️ TYPED AS A MARKDOWN TABLE. The notebook prints one ready to paste.
      An image of a matrix earns nothing. -->
 
-| true \ predicted |  |  |  |
+Seed 42 only (section 7 prints the first seed). Rows are true labels, columns are predictions.
+
+| true \ predicted | `full` | `partial` | `nothing` |
 |---|---|---|---|
-| **** |  |  |  |
-| **** |  |  |  |
-| **** |  |  |  |
+| **`full`** | 15 | 0 | 0 |
+| **`partial`** | 6 | 0 | 2 |
+| **`nothing`** | 3 | 0 | 6 |
 
 **My biggest off-diagonal number, and what it means:**
 <!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
