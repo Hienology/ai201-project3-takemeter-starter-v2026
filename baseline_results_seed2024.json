@@ -1,0 +1,194 @@
+{
+  "model": "facebook/bart-large-mnli",
+  "n": 32,
+  "seed": 42,
+  "held_out": true,
+  "used_definitions": true,
+  "scores": {
+    "n": 32,
+    "accuracy": 0.25,
+    "f1_macro": 0.13333333333333333,
+    "per_label": {
+      "full": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 15
+      },
+      "nothing": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 9
+      },
+      "partial": {
+        "precision": 0.25,
+        "recall": 1.0,
+        "f1": 0.4,
+        "support": 8
+      }
+    }
+  },
+  "predictions": [
+    {
+      "text": "WTA 500 Ningbo R2: Bejlek def [8] Cirstea 7-6(3), 6-4",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "Almaty 250 SF: (Q) N. Basilashvili def. (7) S. Tsitsipas 6-3, 6-7 (5), 6-3",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "Team Europe being a meme at the Laver Cup courtesy of Mensik, Alcaraz, Cobolli and a few cameos from Ruud",
+      "gold": "nothing",
+      "predicted": "partial"
+    },
+    {
+      "text": "WTA 250 Osaka QF: A. Krueger def [4] T. Gibson 6-1, 6-3",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "Sinner's and Djokovic's former physical trainer Marco Panichi warns about Jannik injury: \"If it's that, it will keep him out for a while. Almost nobody gets surgery for this problem\" Panichi said about a possible iliotibial band syndrome, a common ailment among runners linked to physical overload.",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "Jovic shares hate comments after her loss today",
+      "gold": "partial",
+      "predicted": "partial"
+    },
+    {
+      "text": "Almaty QF: [3] Bublik def. Marozsan - WALKOVER",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "Basel (Swiss Indoors) Main Draw",
+      "gold": "partial",
+      "predicted": "partial"
+    },
+    {
+      "text": "Never Forget: Novak Djokovic 2 Time Olympic Gold Medalist \ud83e\udd47\ud83e\udd47",
+      "gold": "nothing",
+      "predicted": "partial"
+    },
+    {
+      "text": "Brussels Final: Griekspoor def. Struff, 4-6 6-3 6-4",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "Almaty QF: Bublik def. Khachanov - 4-6 7-6\u2075 7-6\u2075",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "Tennis Channel is releasing a documentary on Daria Kasatkina",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "2026 Girls' World Tennis Tour Junior YEC Final: \ud83c\udde8\ud83c\uddf3 Sun X. def. A. Pushkareva 6-3, 6(4)-7, 6-1",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "Ningbo Champs and Runners-Up with their Trophies",
+      "gold": "partial",
+      "predicted": "partial"
+    },
+    {
+      "text": "Unc(s) still got it",
+      "gold": "nothing",
+      "predicted": "partial"
+    },
+    {
+      "text": "2026 Toray Pan Pacific Open WTA 500 | Singles Main Draw",
+      "gold": "partial",
+      "predicted": "partial"
+    },
+    {
+      "text": "When Novak did the splits on return, and John McEnroe \u2018attempted\u2019 the same \ud83d\ude2d",
+      "gold": "nothing",
+      "predicted": "partial"
+    },
+    {
+      "text": "ATP 250 Brussels QF: Struff def. Bergs 6-3, 7-6(6)",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "2026 ATP Coach Of The Year",
+      "gold": "partial",
+      "predicted": "partial"
+    },
+    {
+      "text": "Yannick Noah seems to have changed his coaching style a bit from last year",
+      "gold": "nothing",
+      "predicted": "partial"
+    },
+    {
+      "text": "Greg Allensworth: The man, the myth, the meme, the Red Hot Chili Peppers fan",
+      "gold": "nothing",
+      "predicted": "partial"
+    },
+    {
+      "text": "Huby says Hello",
+      "gold": "nothing",
+      "predicted": "partial"
+    },
+    {
+      "text": "Brussels R2: [5] Michelsen def. Goffin, 6-3 6-4",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "2026 ATP 500 Basel: Singles main draw",
+      "gold": "partial",
+      "predicted": "partial"
+    },
+    {
+      "text": "ATP #263 Rodrigo Pacheco Mendez (21 yo) signs with Texas Men\u2019s Tennis",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "ATP 250 Lyon R2: Van Assche def. [3] Vacherot 2-6, 6-4, 6-4",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "ATP 250 Lyon Open QF: [1] F. Cobolli def. [5] B. Nakashima 4-6, 6-4, 6-4",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "Love this tennis sim game",
+      "gold": "partial",
+      "predicted": "partial"
+    },
+    {
+      "text": "Rublev post-match interview ends with peak awkwardness",
+      "gold": "nothing",
+      "predicted": "partial"
+    },
+    {
+      "text": "Iga telling off the court",
+      "gold": "nothing",
+      "predicted": "partial"
+    },
+    {
+      "text": "Rybakina's fh winner vs Fernandez",
+      "gold": "partial",
+      "predicted": "partial"
+    },
+    {
+      "text": "WTA 250 Osaka SF: K. Siniakov\u00e1 def. [8] K. Boulter 6-1, 6-4",
+      "gold": "full",
+      "predicted": "partial"
+    }
+  ]
+}

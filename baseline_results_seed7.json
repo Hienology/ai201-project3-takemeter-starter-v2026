@@ -1,0 +1,194 @@
+{
+  "model": "facebook/bart-large-mnli",
+  "n": 32,
+  "seed": 42,
+  "held_out": true,
+  "used_definitions": true,
+  "scores": {
+    "n": 32,
+    "accuracy": 0.28125,
+    "f1_macro": 0.14634146341463414,
+    "per_label": {
+      "full": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 15
+      },
+      "nothing": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 8
+      },
+      "partial": {
+        "precision": 0.28125,
+        "recall": 1.0,
+        "f1": 0.43902439024390244,
+        "support": 9
+      }
+    }
+  },
+  "predictions": [
+    {
+      "text": "2026 WTA 250 Guangzhou: Doubles Main Draw",
+      "gold": "partial",
+      "predicted": "partial"
+    },
+    {
+      "text": "When Novak did the splits on return, and John McEnroe \u2018attempted\u2019 the same \ud83d\ude2d",
+      "gold": "nothing",
+      "predicted": "partial"
+    },
+    {
+      "text": "Brussels QF: [1] Fils def. [5] Michelsen, 6-4 7-6(12)",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "Elena Rybakina and Daniil Medvedev are one match away from defending a title for the first time in their respective careers.",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "Medvedev Almaty title report",
+      "gold": "partial",
+      "predicted": "partial"
+    },
+    {
+      "text": "Yibing Wu rips a swinging volley from the baseline",
+      "gold": "partial",
+      "predicted": "partial"
+    },
+    {
+      "text": "Bublik after the thriller against Khachanov",
+      "gold": "partial",
+      "predicted": "partial"
+    },
+    {
+      "text": "ATP 250 Almaty R2: [7] Tsitsipas def. Kukushkin 6-1, 6-2, as Kukushkin retires from tennis after 20 years of his career",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "WTA 250 Osaka R2: K. Siniakova def. M. Linette 6-4, 6-1",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "Pan Pac 500 Q2: Maya Joint def Mai Hontama 7-5 6-3",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "When Tsitsipas fired his dad",
+      "gold": "partial",
+      "predicted": "partial"
+    },
+    {
+      "text": "Introducing Bounces Box: A Tennis Grid Game",
+      "gold": "nothing",
+      "predicted": "partial"
+    },
+    {
+      "text": "The other side of post-matches in Wuhan",
+      "gold": "nothing",
+      "predicted": "partial"
+    },
+    {
+      "text": "Agassi to Team World in the locker room after the ceremony",
+      "gold": "nothing",
+      "predicted": "partial"
+    },
+    {
+      "text": "This is perfect \ud83d\ude2d",
+      "gold": "nothing",
+      "predicted": "partial"
+    },
+    {
+      "text": "Rare scenes",
+      "gold": "nothing",
+      "predicted": "partial"
+    },
+    {
+      "text": "\"Dame ya la puta toalla\" -- Jodar is assessed an unsportsmanlike conduct warning after cursing at ball kid in Spanish",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "Medvedev Almaty 2026 and 2025\ud83e\ude77\ud83e\ude77",
+      "gold": "partial",
+      "predicted": "partial"
+    },
+    {
+      "text": "Lyon QF: [2] Fritz def. Altmaier, 7-6(5) 6-2",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "Go Home TennisTV, You're Drunk!",
+      "gold": "nothing",
+      "predicted": "partial"
+    },
+    {
+      "text": "Nole in China apparently tried some Tai Chi by Kunming Lake and then wrote his name using a giant brush in Chinese calligraphy",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "2026 WTA 500 Tokyo: Singles and Doubles Main Draws",
+      "gold": "partial",
+      "predicted": "partial"
+    },
+    {
+      "text": "WTA 500: NINGBO Final (1) E. Rybakina def. L. Fernandez 6-2 6-2",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "ATP 250 European Open 250 R2: [2] J. Lehecka def. R. Collignon 6-4, 6-2",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "TIL in 2019 Andy Roddick and Serena Williams went on TV and performed a lip-synced cover of \"Finesse\" by Bruno Mars and Cardi B",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "ITF W50 Austin R2: [Q] Frodin def. [1/WC] Stephens, 6-4 6-4",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "Toray Pan Pacific Open Player List",
+      "gold": "partial",
+      "predicted": "partial"
+    },
+    {
+      "text": "Tsitsipas sends another 'dart' at his father \"My team is half of my work. A team that's inspiring and has a calm and pleasant atmosphere. Now I'm more cautious about the things I want to engage with in life, and especially with whom. I better understand the kind of people I want to collaborate with\"",
+      "gold": "partial",
+      "predicted": "partial"
+    },
+    {
+      "text": "ATP Lyon R2: Musetti def. Kouam\u00e9 6-4, 6-4",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "Lyon R2: Moutet def. Balshaw - 6-4 6-4",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "[OptaLena] on X: \"6 - Elena Rybakina has reached six Tour finals in 2026, surpassing her previous single-season highs in 2020 and 2024 (5). Stratum.",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "Happy Birthday Andrey! [20 October]",
+      "gold": "nothing",
+      "predicted": "partial"
+    }
+  ]
+}

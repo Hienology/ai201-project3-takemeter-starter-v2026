@@ -1,0 +1,194 @@
+{
+  "model": "facebook/bart-large-mnli",
+  "n": 32,
+  "seed": 42,
+  "held_out": true,
+  "used_definitions": true,
+  "scores": {
+    "n": 32,
+    "accuracy": 0.25,
+    "f1_macro": 0.13333333333333333,
+    "per_label": {
+      "full": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 15
+      },
+      "nothing": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 9
+      },
+      "partial": {
+        "precision": 0.25,
+        "recall": 1.0,
+        "f1": 0.4,
+        "support": 8
+      }
+    }
+  },
+  "predictions": [
+    {
+      "text": "Best way to celebrate winning WTA 1000? Buying Lego",
+      "gold": "nothing",
+      "predicted": "partial"
+    },
+    {
+      "text": "Brussels SF: Griekspoor def. Cerundolo - 2-6 6-3 7-6\u2074",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "Stan Wawrinka wins the 2026 US Open Joseph Mateo Trophy (aka the Wooden Spoon / Anti-Slam) and becomes the 2nd man to win both the tournament and this trophy at the US Open",
+      "gold": "nothing",
+      "predicted": "partial"
+    },
+    {
+      "text": "ATP active BIG event finalists",
+      "gold": "partial",
+      "predicted": "partial"
+    },
+    {
+      "text": "W100 Wrexham Final: (WC) Klugman def. Jacquemot 6-2 6-4",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "WTA 500 Ningbo R16: [Q] Katarzyna Kawa def. [5] Belinda Bencic 7-5, 6-2",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "Tsitsipas sends another 'dart' at his father \"My team is half of my work. A team that's inspiring and has a calm and pleasant atmosphere. Now I'm more cautious about the things I want to engage with in life, and especially with whom. I better understand the kind of people I want to collaborate with\"",
+      "gold": "partial",
+      "predicted": "partial"
+    },
+    {
+      "text": "Headlines.",
+      "gold": "nothing",
+      "predicted": "partial"
+    },
+    {
+      "text": "Elena Rybakina and Daniil Medvedev are one match away from defending a title for the first time in their respective careers.",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "ATP 250 Lyon R2: Van Assche def. [3] Vacherot 2-6, 6-4, 6-4",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "I made a quick little sim game where you try to make it on the Challenger tour",
+      "gold": "nothing",
+      "predicted": "partial"
+    },
+    {
+      "text": "Pan Pac 500 Q2: Maya Joint def Mai Hontama 7-5 6-3",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "ATP Lyon R2: Musetti def. Kouam\u00e9 6-4, 6-4",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "The Jannik Sinner update everyone has been waiting for: He has finally passed his motorbike license test",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "Something's off",
+      "gold": "nothing",
+      "predicted": "partial"
+    },
+    {
+      "text": "WTA 250 Osaka R16: [1] A. Li def Z. S\u00f6nmez 6-3, 6-1",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "ATP Almaty 250 QF: Tsitsipas def. Duckworth 6-3, 6-4",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "WTA 500 Ningbo R16: [4] Iva Jovic def. Jasmine Paolini 6-4, 6-3",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "Sinner's and Djokovic's former physical trainer Marco Panichi warns about Jannik injury: \"If it's that, it will keep him out for a while. Almost nobody gets surgery for this problem\" Panichi said about a possible iliotibial band syndrome, a common ailment among runners linked to physical overload.",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "WTA 500 Ningbo Open QF: L. Fernandez def. E. Alexandrova 4-6 6-2 6-1",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "ATP 250 Lyon R2: [4] Paul def. Bonzi 6-4, \u20746-7, 6-3",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "Medvedev on how he wants to retire \"I haven't thought much about it, but of course, if tournaments returned to Russia, that would be ideal. Especially if they were held at the end of the season, as they used to be. If not, the US Open or Almaty seems like good options\"",
+      "gold": "full",
+      "predicted": "partial"
+    },
+    {
+      "text": "New York cheers a Zverev time violation warning; he complains.",
+      "gold": "nothing",
+      "predicted": "partial"
+    },
+    {
+      "text": "Big Umbrella Drama.",
+      "gold": "nothing",
+      "predicted": "partial"
+    },
+    {
+      "text": "\"I've played tennis for 30 years and this is the first time I hear that this is also a foot fault.\"",
+      "gold": "partial",
+      "predicted": "partial"
+    },
+    {
+      "text": "When Tsitsipas fired his dad",
+      "gold": "partial",
+      "predicted": "partial"
+    },
+    {
+      "text": "2026 ATP 500 Vienna: Singles main draw",
+      "gold": "partial",
+      "predicted": "partial"
+    },
+    {
+      "text": "The bottom ten ATP year end #1s by yearly ELO rating. Source: Jeff Sackmann/Tennis Abstract",
+      "gold": "partial",
+      "predicted": "partial"
+    },
+    {
+      "text": "One of the most ridiculous points you\u2019d ever see \ud83d\ude2d",
+      "gold": "partial",
+      "predicted": "partial"
+    },
+    {
+      "text": "Active players with 10+ tour level Finals",
+      "gold": "partial",
+      "predicted": "partial"
+    },
+    {
+      "text": "Another Rafandy gem: He can win 52 French opens but not work Instagram \ud83d\ude2d",
+      "gold": "nothing",
+      "predicted": "partial"
+    },
+    {
+      "text": "Iga telling off the court",
+      "gold": "nothing",
+      "predicted": "partial"
+    }
+  ]
+}
