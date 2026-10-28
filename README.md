@@ -227,6 +227,7 @@ No pre-labelling: every label in `labels.csv` is mine, and the AI never suggeste
 **What I predicted before I looked:**
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
      prediction made afterwards isn't one. -->
+I expect the trained model to beat the baseline by about 20 points of accuracy, with the biggest gain on `full`, because a `full` title is the event itself, with clear, strict boundaries, and needs no reading of context or intent the way `partial` and `nothing` titles do. I had already seen the trained model's section 5 scores (F1: `full` 0.769, `partial` 0.000, `nothing` 0.706) when I wrote this.
 
 **What the gap actually means:**
 <!-- If the baseline matched your trained model, your fine-tuning added
