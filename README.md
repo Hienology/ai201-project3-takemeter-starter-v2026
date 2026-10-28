@@ -235,6 +235,7 @@ I expect the trained model to beat the baseline by about 20 points of accuracy, 
 **What the gap actually means:**
 <!-- If the baseline matched your trained model, your fine-tuning added
      nothing — and that is a real finding, not a failure. Say it plainly. -->
+Most of the +0.41 is the baseline failing, not the trained model succeeding: the baseline answered `partial` for every title (0.250, below the 0.47 of always answering `full`), so it set no boundary at all. Fine-tuning did learn something real (`full` F1 0.77-0.82 on all three seeds, `nothing` on two of three), but it never learned the `full`/`partial` boundary: on seeds 42 and 2024 it predicted `partial` zero times, and overall it beats always answering `full` by only 6 titles (21 vs 15). So it's a success on `full` and a failure on `partial`, the label that depends on context: whether a title states the fact itself or only points at it.
 
 
 
@@ -247,11 +248,11 @@ I expect the trained model to beat the baseline by about 20 points of accuracy, 
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1. F1 per label (`full` / `partial` / `nothing`) | ≥ 0.75 / 0.50 / 0.75 | 0.769 / 0.000 / 0.706 | 0.788 / 0.435 / 0.000 | 0.824 / 0.000 / 0.636 |  |
-| 2. Accuracy | ≥ 0.78 (25 of 32) | 0.656 (21) | 0.562 (18) | 0.656 (21) |  |
-| 3. Predicted count vs real count (`full` / `partial` / `nothing`) | each within 2 | 24/0/8 vs 15/8/9 | 18/14/0 vs 15/9/8 | 19/0/13 vs 15/8/9 |  |
-| 4. Staff agreement | ≥ 20 of 30 | 24/30 (no seed) | 24/30 (no seed) | 24/30 (no seed) |  |
-| 5. Trained F1 minus baseline F1 (`full` / `partial` / `nothing`) | each ≥ +0.20 | +0.769 / -0.400 / +0.706 | +0.788 / -0.004 / 0.000 | +0.824 / -0.400 / +0.636 |  |
+| 1. F1 per label (`full` / `partial` / `nothing`) | ≥ 0.75 / 0.50 / 0.75 | 0.769 / 0.000 / 0.706 | 0.788 / 0.435 / 0.000 | 0.824 / 0.000 / 0.636 | MISSED |
+| 2. Accuracy | ≥ 0.78 (25 of 32) | 0.656 (21) | 0.562 (18) | 0.656 (21) | MISSED |
+| 3. Predicted count vs real count (`full` / `partial` / `nothing`) | each within 2 | 24/0/8 vs 15/8/9 | 18/14/0 vs 15/9/8 | 19/0/13 vs 15/8/9 | MISSED |
+| 4. Staff agreement | ≥ 20 of 30 | 24/30 (no seed) | 24/30 (no seed) | 24/30 (no seed) | MET |
+| 5. Trained F1 minus baseline F1 (`full` / `partial` / `nothing`) | each ≥ +0.20 | +0.769 / -0.400 / +0.706 | +0.788 / -0.004 / 0.000 | +0.824 / -0.400 / +0.636 | MISSED |
 
 Device: `mps` (Apple Silicon GPU), torch 2.14.1. Numbers from `results_three_seeds_before.json` and `baseline_results*.json`.
 
@@ -272,6 +273,7 @@ Seed 42 only (section 7 prints the first seed). Rows are true labels, columns ar
 <!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
      direction. "7 real analysis posts were called hot_take and only 3 went the
      other way" is a direction, not just an error rate. -->
+The `full`/`partial` boundary fails in one direction only: 6 of 8 `partial` titles were called `full`, and 0 of 15 `full` titles were called `partial`. A `full` title has a strict test (it states the result, announcement or record itself), so the model never doubts those; a `partial` title names the same players and events but leaves the fact out, so to the model it looks like a `full` title, and it falls back to `full`, which is also the biggest label (70 of 146 training titles).
 
 
 
@@ -284,11 +286,11 @@ Seed 42 only (section 7 prints the first seed). Rows are true labels, columns ar
 
 | # | Criterion | Target | Verdict | How I decided |
 |---|---|---|---|---|
-| 1 |  |  |  |  |
-| 2 |  |  |  |  |
-| 3 |  |  |  |  |
-| 4 |  |  |  |  |
-| 5 |  |  |  |  |
+| 1 | F1 per label, all three seeds | `full` ≥ 0.75, `partial` ≥ 0.50, `nothing` ≥ 0.75 | MISSED | `partial` 0.000 / 0.435 / 0.000 and `nothing` 0.706 / 0.000 / 0.636 are below target on every seed; only `full` (lowest 0.769) holds |
+| 2 | Accuracy, all three seeds | ≥ 0.78 (25 of 32) | MISSED | Best seed 0.656 (21 of 32); seed 7 0.562 (18) |
+| 3 | Predicted count within 2 of real count, per label, all three seeds | gap ≤ 2 | MISSED | Only seed 42 `nothing` holds (8 vs 9); worst gaps are 9 (`full`, seed 42) and 8 (`partial` seeds 42 and 2024, `nothing` seed 7) |
+| 4 | Staff agreement (`agreement.py`) | ≥ 20 of 30 | MET | 24 of 30 (0.80); measured once, no seed |
+| 5 | Trained F1 minus baseline F1, per label, all three seeds | each ≥ +0.20 | MISSED | `partial` −0.400 / −0.004 / −0.400 on every seed, and `nothing` 0.000 on seed 7; only `full` (lowest +0.769) holds |
 
 **Diagnoses**
 
@@ -300,6 +302,20 @@ Seed 42 only (section 7 prints the first seed). Rows are true labels, columns ar
      ⚠️ Use your agreement report as evidence. It is the only instrument you
      have that can tell a LABELLING problem from a MODEL problem, and this
      section is graded on whether you used it that way. -->
+**Shared cause (#1, #2, #3, #5): too few examples for the two smaller labels, plus a genuinely hard pair (`full`/`partial`).** On every seed the model drops one small label completely: `partial` on seeds 42 and 2024, `nothing` on seed 7 (each predicted 0 times).
+
+*Evidence:*
+- `partial` and `nothing` have 38 training titles each against 70 for `full`. Across seeds, `partial` F1 runs 0-0.435 and `nothing` F1 runs 0-0.706, far past the notebook's 0.10 stability line.
+- The seed-42 matrix fails in one direction only: 6 `partial` titles called `full`, 0 the other way.
+- `partial` and `full` titles name the same players and events; what separates them is whether the fact is stated, which mostly shows as what's missing.
+
+*Labelling problem or model problem:* my agreement report (24/30, 3 posts in pile (a)) shows I apply a written rule loosely about 1 time in 10, so some noise at my hardest boundary, `full`/`partial`, is likely. But noise can't make a label get predicted zero times. That is the model with too few examples.
+
+**Per miss:**
+- **#1:** `partial` and `nothing` fall below target on every seed because the dropped label scores 0 and the other small label's titles leak into `full`.
+- **#2:** on seed 42, 8 of the 11 errors are `partial` titles; getting them right would have reached 29 of 32. Accuracy loses whichever label was dropped.
+- **#3:** the dropped label's count is 0 and its titles swell another label: `full` 24 vs 15 (seed 42), `partial` 14 vs 9 (seed 7), `nothing` 13 vs 9 (seed 2024).
+- **#5:** the baseline gets `partial` F1 0.40 for free by calling every title `partial`, while the trained model drops `partial` on two seeds and `nothing` on seed 7 (0.000 vs 0.000). The same cause, made worse by the baseline's collapse.
 
 
 
